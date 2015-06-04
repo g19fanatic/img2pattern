@@ -3,6 +3,7 @@ Takes an image and helps break it down so that it can be crocheted in a "paint b
 
 ## How to run
 - Install Python 2.x
+- pip install Pillow
 - drag/drop image on top of the img2pattern.py file (alternatively, pass the full path of the image in as a command line parameter)
 - open up the new html file
 

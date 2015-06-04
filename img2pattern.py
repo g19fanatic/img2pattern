@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-import sys, os, Image
+import sys, os
+from PIL import Image
 
 def rgb2hex(r, g, b): #curtosy of http://stackoverflow.com/a/19917486/496405
     return '#{:02x}{:02x}{:02x}'.format(r, g, b)
@@ -10,9 +11,8 @@ if __name__ == '__main__':
         imgPath = sys.argv[1]
         imgDir,imgName = os.path.split(imgPath)
         im = Image.open(imgPath)
-        im.convert('RGBA')
+        im = im.convert('RGB')
         xsize,ysize = im.size
-        pixels = im.load()
         lines=[]
         colors = []
 
@@ -21,7 +21,7 @@ if __name__ == '__main__':
         for y in reversed(range(ysize)):
             currentLine = []
             for x in range(xsize):
-                curColor = pixels[x,y]
+                curColor = im.getpixel((x,y))
                 if curColor not in colors:
                     colors.append(curColor)
                 currentLine.append(str(colors.index(curColor)+1))
